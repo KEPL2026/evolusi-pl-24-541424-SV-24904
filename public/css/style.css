@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #2b2b2b;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    height: 80px;
+    padding: 0 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+
+    color: #b08d45;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333333;
+
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #b08d45;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 600px;
+
+    padding: 100px 8%;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #f8f5ef;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.small-title {
+    color: #b08d45;
+
+    font-size: 14px;
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    line-height: 1.15;
+
+    margin-bottom: 24px;
+
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.hero-description {
+    max-width: 550px;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    color: #666666;
+
+    margin-bottom: 35px;
+}
+
+.btn-primary {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    background-color: #b08d45;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 4px;
+
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #947538;
+}
+
+
+/* ABOUT */
+
+.about {
+    padding: 100px 20%;
+
+    text-align: center;
+}
+
+.section-label {
+    color: #b08d45;
+
+    font-size: 13px;
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+.about h2,
+.section-heading h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+
+    font-size: 38px;
+
+    margin-bottom: 20px;
+}
+
+.about p:last-child {
+    color: #666666;
+
+    line-height: 1.8;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+/* SERVICES */
+
+.services {
+    padding: 100px 8%;
+
+    background-color: #fafafa;
+}
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.service-container {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.service-card {
+    padding: 40px 30px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.service-number {
+    color: #b08d45;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.service-card h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #777777;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+.price {
+    color: #b08d45;
+
+    font-weight: bold;
+}
+
+
+/* BOOKING CTA */
+
+.booking {
+    padding: 100px 8%;
+
+    text-align: center;
+
+    background-color: #b08d45;
+    color: white;
+}
+
+.section-label.light {
+    color: #f7e9c5;
+}
+
+.booking h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+
+    font-size: 42px;
+
+    margin-bottom: 20px;
+}
+
+.booking p {
+    margin-bottom: 30px;
+
+    line-height: 1.7;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    background-color: #ffffff;
+    color: #8c6d32;
+
+    text-decoration: none;
+
+    border-radius: 4px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #f8f5ef;
+}
+
+
+/* FOOTER */
+
+footer {
+    padding: 50px 8%;
+
+    text-align: center;
+
+    background-color: #202020;
+    color: #ffffff;
+}
+
+footer h3 {
+    color: #d2ad60;
+
+    font-family: Georgia, 'Times New Roman', serif;
+
+    font-size: 26px;
+
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: #aaaaaa;
+}
+
+.copyright {
+    margin-top: 25px;
+
+    font-size: 13px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 80px 6%;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .about {
+        padding: 80px 8%;
+    }
+
+    .services {
+        padding: 80px 6%;
+    }
+
+    .service-container {
+        grid-template-columns: 1fr;
+    }
+
+}
