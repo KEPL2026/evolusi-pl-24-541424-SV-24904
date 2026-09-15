@@ -142,7 +142,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: staging
 
-    # Production hanya boleh berjalan dari push ke main
+    # Production hanya berjalan pada push ke main
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     environment:
@@ -175,9 +175,9 @@ jobs:
           php-version: "8.3"
           extensions: mbstring, pdo_mysql
 
-      # -----------------------------------------------------
-      # Install SSH Server pada GitHub Runner
-      # -----------------------------------------------------
+      # =====================================================
+      # Install OpenSSH Server
+      # =====================================================
       - name: Install OpenSSH server
         run: |
           sudo apt-get update
@@ -185,9 +185,9 @@ jobs:
           sudo mkdir -p /run/sshd
           sudo service ssh start
 
-      # -----------------------------------------------------
-      # Menyiapkan SSH key
-      # -----------------------------------------------------
+      # =====================================================
+      # Menyiapkan SSH Key
+      # =====================================================
       - name: Prepare SSH deployment user
         run: |
           mkdir -p "$HOME/.ssh"
@@ -199,20 +199,18 @@ jobs:
           ssh-keygen -y -f "$HOME/.ssh/deploy_key" > "$HOME/.ssh/authorized_keys"
           chmod 600 "$HOME/.ssh/authorized_keys"
 
-          - name: Verify secret masking
-  env:
-    DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-  run: |
-    echo "Masked deployment token: $DEPLOY_TOKEN"
+      # =====================================================
+      # Membuktikan GitHub menyensor secret menjadi ***
+      # =====================================================
+      - name: Verify secret masking
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          echo "Masked deployment token: $DEPLOY_TOKEN"
 
-      # -----------------------------------------------------
-      # Menyiapkan project yang akan dideploy
-      #
-      # PENTING:
-      # Di sini TIDAK menjalankan php artisan.
-      # vendor belum dibuat sampai deploy.sh menjalankan
-      # composer install.
-      # -----------------------------------------------------
+      # =====================================================
+      # Menyiapkan Project Deployment
+      # =====================================================
       - name: Prepare deployment directory
         run: |
           rm -rf "$HOME/glowithsya"
@@ -226,9 +224,9 @@ jobs:
 
           chmod +x deploy.sh
 
-      # -----------------------------------------------------
-      # Membuktikan SSH berhasil
-      # -----------------------------------------------------
+      # =====================================================
+      # Membuktikan SSH Berhasil
+      # =====================================================
       - name: Test SSH connection
         run: |
           ssh \
@@ -237,9 +235,9 @@ jobs:
             "$(whoami)@127.0.0.1" \
             "echo 'SSH connection successful'"
 
-      # -----------------------------------------------------
-      # deploy.sh benar-benar dijalankan MELALUI SSH
-      # -----------------------------------------------------
+      # =====================================================
+      # Menjalankan deploy.sh melalui SSH
+      # =====================================================
       - name: Run deploy script through SSH
         run: |
           ssh \
