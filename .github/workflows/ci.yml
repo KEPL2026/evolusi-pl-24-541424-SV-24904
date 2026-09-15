@@ -199,6 +199,12 @@ jobs:
           ssh-keygen -y -f "$HOME/.ssh/deploy_key" > "$HOME/.ssh/authorized_keys"
           chmod 600 "$HOME/.ssh/authorized_keys"
 
+          - name: Verify secret masking
+  env:
+    DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+  run: |
+    echo "Masked deployment token: $DEPLOY_TOKEN"
+
       # -----------------------------------------------------
       # Menyiapkan project yang akan dideploy
       #
